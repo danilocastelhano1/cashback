@@ -18,13 +18,9 @@ class Migration(migrations.Migration):
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("updated_at", models.DateTimeField(auto_now=True)),
                 ("sold_at", models.DateTimeField()),
-                ("total", models.DecimalField(
-                    decimal_places=2, max_digits=12
-                )),
+                ("total", models.DecimalField(decimal_places=2, max_digits=12)),
                 ("sent_to_api", models.BooleanField(default=False)),
-                ("result_api", models.JSONField(
-                    blank=True, default={}, null=True
-                )),
+                ("result_api", models.JSONField(blank=True, default={}, null=True)),
             ],
             options={
                 "verbose_name_plural": "Cashback's",
