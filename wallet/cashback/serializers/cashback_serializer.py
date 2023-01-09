@@ -1,13 +1,9 @@
 from decimal import Decimal
 
+from django.db import transaction
 from rest_framework import serializers
 
-from django.db import transaction
-
-from ..models import Cashback
-from ..models import Customer
-from ..models import Products
-
+from ..models import Cashback, Customer, Products
 from ..serializers.customer_serializer import CustomerSerializer
 from ..serializers.product_serializer import ProductSerializer
 
@@ -18,12 +14,8 @@ class CashbackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cashback
-        fields = (
-            "sold_at", "customer",
-            "total", "products"
-        )
-        read_only_fields = ('id', 'created_at', 'updated_at')
-
+        fields = ("sold_at", "customer", "total", "products")
+        read_only_fields = ("id", "created_at", "updated_at")
 
     @transaction.atomic
     def create(self, validated_data):
@@ -38,7 +30,9 @@ class CashbackSerializer(serializers.ModelSerializer):
         return cashback
 
     def create_or_get_customer(self, customer) -> Customer:
-        customer, _ = Customer.objects.get_or_create(document=customer["document"], defaults={"name": customer["name"]})
+        customer, _ = Customer.objects.get_or_create(
+            document=customer["document"], defaults={"name": customer["name"]}
+        )
         return customer
 
     def validate_products(self, value):
@@ -47,5 +41,7 @@ class CashbackSerializer(serializers.ModelSerializer):
             total_calculated += Decimal(product["qty"]) * Decimal(product["value"])
 
         if Decimal(self.initial_data["total"]) != total_calculated:
-            raise serializers.ValidationError(detail="Total does not match with the sum of products")
+            raise serializers.ValidationError(
+                detail="Total does not match with the sum of products"
+            )
         return value

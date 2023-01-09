@@ -1,8 +1,9 @@
-import requests
 from decimal import Decimal
+
+import requests
+from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.conf import settings
 
 from .models import Cashback
 
@@ -12,7 +13,9 @@ def cashback_post_save(sender, instance, created, *args, **kwargs):
     if created:
         data = {
             "document": instance.customer.document,
-            "cashback": round(instance.total * Decimal((settings.CASHBACK_PERCENT / 100)), 2)
+            "cashback": round(
+                instance.total * Decimal((settings.CASHBACK_PERCENT / 100)), 2
+            ),
         }
 
         response = requests.post(settings.CASHBACK_URL, data=data)

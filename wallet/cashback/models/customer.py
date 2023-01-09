@@ -1,7 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from .base_model import BaseModel
+
 from ..utils.validate_cpf import validate_cpf
+from .base_model import BaseModel
 
 
 class Customer(BaseModel):

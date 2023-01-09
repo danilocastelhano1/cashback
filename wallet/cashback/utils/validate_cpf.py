@@ -6,7 +6,7 @@ def validate_cpf(cpf: str) -> bool:
     Check if a cpf is valid or not
     must have 11 positions
     """
-    cpf = ''.join(re.findall(r'\d', str(cpf)))
+    cpf = "".join(re.findall(r"\d", str(cpf)))
 
     if not cpf or len(cpf) < 11:
         return False
