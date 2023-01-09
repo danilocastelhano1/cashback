@@ -8,6 +8,8 @@ class Cashback(BaseModel):
     customer = models.ForeignKey(to=Customer, related_name="cashback_customer", on_delete=models.CASCADE, null=False,
                                  blank=False)
     total = models.DecimalField(max_digits=12, decimal_places=2, blank=False, null=False)
+    sent_to_api = models.BooleanField(default=False)
+    result_api = models.JSONField(blank=True, null=True, default={})
 
     class Meta:
         verbose_name_plural = "Cashback's"
