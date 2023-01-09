@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
+from django.conf import settings
 
 
 class Command(BaseCommand):
@@ -11,7 +12,7 @@ class Command(BaseCommand):
                 self.style.WARNING("Iniciando o processo de Inserção de Super User")
             )
             User.objects.create_superuser(
-                "admin", "admin@example.com", "mystrongpassword"
+                settings.USERNAME, "admin@example.com", settings.PASSWORD
             )
             self.stdout.write(
                 self.style.SUCCESS("processo de criação de Super User Finalizado")

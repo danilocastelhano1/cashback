@@ -127,6 +127,15 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}
+
 
 CASHBACK_PERCENT = 15
 CASHBACK_URL = "https://5efb30ac80d8170016f7613d.mockapi.io/api/mock/Cashback"
+
+USERNAME = "admin"
+PASSWORD = "mystrongpassword"
