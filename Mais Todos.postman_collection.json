@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "16d9b260-a2e3-4c49-a69b-32024c9daf03",
+		"name": "Mais Todos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19802373"
+	},
+	"item": [
+		{
+			"name": "Create Cashback",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "mystrongpassword",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sold_at\": \"2022-01-02 00:00:00\",\r\n    \"customer\": {\r\n       \"document\": \"88462165040\",\r\n       \"name\": \"Ari Toledo\"\r\n    },\r\n    \"total\": \"100.00\",\r\n    \"products\": [\r\n       {\r\n          \"type\": \"A\",\r\n          \"value\": \"10.00\",\r\n          \"qty\": 1\r\n       },\r\n       {\r\n          \"type\": \"C\",\r\n          \"value\": \"10.00\",\r\n          \"qty\": 9\r\n       }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cashback/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cashback",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

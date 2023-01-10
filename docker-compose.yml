@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py seed_db &&
+             python manage.py test &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/mais_todos
+    ports:
+      - "8000:8000"
