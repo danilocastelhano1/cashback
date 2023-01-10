@@ -13,8 +13,8 @@ class SendCashbackApi(object):
         data = {
             "document": document,
             "cashback": round(
-                total * Decimal((settings.CASHBACK_PERCENT / 100)), 2
+                total * Decimal((self.CASHBACK_PERCENT / 100)), 2
             ),
         }
 
-        return requests.post(settings.CASHBACK_URL, data=data)
+        return requests.post(self.CASHBACK_URL, data=data)
