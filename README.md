@@ -24,3 +24,8 @@ just run inside docker:
 ```docker-compose run api bash```
 then:
 ```python manage.py test```
+
+## Celery and Celery beat
+Now the call to the external api is made using celery.
+
+## Code improved with the suggestions made by André
