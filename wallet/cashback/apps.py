@@ -6,4 +6,4 @@ class CashbackConfig(AppConfig):
     name = "wallet.cashback"
 
     def ready(self):
-        import wallet.cashback.signals
+        pass

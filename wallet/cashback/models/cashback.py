@@ -18,6 +18,9 @@ class Cashback(BaseModel):
     )
     sent_to_api = models.BooleanField(default=False)
     result_api = models.JSONField(blank=True, null=True, default=dict)
+    total_cashback = models.DecimalField(
+        max_digits=12, decimal_places=2, blank=True, null=True
+    )
 
     class Meta:
         verbose_name_plural = "Cashback's"
