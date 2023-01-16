@@ -1,9 +1,19 @@
 # Cashback in Django Rest Framework
 
+## Considerations
+For test purpose i did not create a new app to store the product, but i understand that's
+better for scaloning. 
+
+## Used stacks:
+- Django Rest Framework (API)
+- Docker (Containering the app and all the services and db) 
+- Postgres (store data into database)
+- Celery (Worker to handle the tasks)
+- Celery beat (cronjob to send the task every x minutes)
+- Redis (to cash the celery)
 
 ## Steps
-- run ```docker-compose up --build```
-  (I used docker, because it's easy to test from your behalf)
+- just run ```docker-compose up --build``` you shouldn't have problem this time!
 Once the docker is running, you can test the API below
 
 
@@ -28,4 +38,11 @@ then:
 ## Celery and Celery beat
 Now the call to the external api is made using celery.
 
-## Code improved with the suggestions made by André
+## Code improved with the suggestions made by email
+
+## Prints to ensure the app is ok
+### Docker
+![Docker](./images/docker_is_ok.png)
+
+###  Celery Beat
+![Docker](./images/celery_beat.png)

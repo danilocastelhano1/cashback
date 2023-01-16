@@ -1,4 +1,7 @@
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def validate_cpf(cpf: str) -> bool:
@@ -9,6 +12,7 @@ def validate_cpf(cpf: str) -> bool:
     cpf = "".join(re.findall(r"\d", str(cpf)))
 
     if not cpf or len(cpf) < 11:
+        logger.error("Total characteres in  CPF is not valid %s", cpf)
         return False
 
     old = [int(d) for d in cpf]
@@ -23,4 +27,5 @@ def validate_cpf(cpf: str) -> bool:
 
     if new == old:
         return True
+    logger.error("CPF number not valid %s", cpf)
     return False
